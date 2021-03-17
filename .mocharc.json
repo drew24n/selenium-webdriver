@@ -1,0 +1,16 @@
+{
+  "extension": ["ts"],
+  "require": ["ts-node/register"],
+  "reporter": "node_modules/mochawesome",
+  "reporter-option": [
+    "overwrite=false",
+    "showPassed=true",
+    "json=false",
+    "quiet=true",
+    "reportDir=reports",
+    "charts=true",
+    "autoOpen=true",
+    "showSkipped=true",
+    "timestamp=yyyy-mm-dd'T'HH:MM:ss"
+  ]
+}
