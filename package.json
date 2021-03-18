@@ -1,10 +1,12 @@
 {
   "name": "auto-tests",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "description": "api and browser tests",
   "scripts": {
-    "test:api": "npx mocha api/**/*.ts --reporter-options reportFilename=API,reportTitle=API,reportPageTitle=API"
+    "test:api": "npx mocha api/**/*.ts --reporter-options reportFilename=api,reportTitle='api tests',reportPageTitle='api tests'",
+    "test:chrome": "npx mocha browser/specs/**/*.ts --reporter-options reportFilename=chrome,reportTitle='chrome tests',reportPageTitle='chrome tests'",
+    "test:all": "npx mocha 'api/**/*.spec.ts' 'browser/**/*.spec.ts' --reporter-options reportFilename=all,reportTitle='all tests',reportPageTitle='all tests'"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
