@@ -12,6 +12,9 @@
     "charts=true",
     "autoOpen=true",
     "showSkipped=true",
-    "timestamp=yyyy-mm-dd'T'HH:MM:ss"
+    "timestamp=yyyy-mm-dd'T'HH:MM:ss",
+    "reportFilename=report",
+    "reportTitle=Test Report",
+    "reportPageTitle=Test Report"
   ]
 }

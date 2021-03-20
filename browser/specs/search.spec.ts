@@ -3,7 +3,7 @@ import Page from '../pages/page';
 import { expect } from 'chai';
 import { driver } from '../../config/chromedriver';
 
-it('search on Google', async function () {
+it('search on Google', async () => {
   await Page.open('https://www.google.com');
   await driver.findElement(By.name('q')).click();
   await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
@@ -12,7 +12,8 @@ it('search on Google', async function () {
 
   const title = await driver.getTitle();
 
-  expect(title).to.contain('webdriver - Google Search');
-
-  await driver.quit();
+  expect(title).be.equal('w1ebdriver - Google Search');
 });
+
+after('quit browser on complete', async () => await driver.quit());
+Page.screenshotOnFail();
