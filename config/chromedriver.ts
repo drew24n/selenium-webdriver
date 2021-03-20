@@ -4,7 +4,7 @@ import 'chromedriver';
 
 const chromeOptions = new Options()
   .headless()
-  .windowSize({ width: 1920, height: 1080 }) //for full size screenshots
+  .windowSize({ width: 1920, height: 1080 }) //for full size screenshots in headless mode
   .excludeSwitches('enable-logging'); //hide chrome warnings
 
 export const driver: WebDriver = new Builder()

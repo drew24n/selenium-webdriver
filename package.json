@@ -1,6 +1,6 @@
 {
   "name": "auto-tests",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "description": "api and browser tests",
   "scripts": {

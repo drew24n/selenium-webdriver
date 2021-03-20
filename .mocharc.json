@@ -2,6 +2,10 @@
   "extension": ["ts"],
   "require": ["ts-node/register"],
   "timeout": 10000,
+  "retries": 1,
+  "bail": false,
+  "_parallel": true,
+  "_jobs": 2,
   "reporter": "node_modules/mochawesome",
   "reporter-option": [
     "overwrite=false",
@@ -9,7 +13,6 @@
     "json=false",
     "quiet=true",
     "reportDir=reports",
-    "charts=true",
     "autoOpen=true",
     "showSkipped=true",
     "timestamp=yyyy-mm-dd'T'HH:MM:ss",
