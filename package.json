@@ -1,12 +1,12 @@
 {
   "name": "auto-tests",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": true,
   "description": "api and browser tests",
   "scripts": {
     "test:api": "npx mocha api/specs/**/*.ts",
     "test:chrome": "npx mocha browser/specs/**/*.ts",
-    "test:all": "npx mocha 'api/specs/**/*.ts' 'browser/**/*.spec.ts'"
+    "test:all": "npx mocha browser/**/*.spec.ts api/specs/**/*.ts"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",

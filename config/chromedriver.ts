@@ -11,3 +11,5 @@ export const driver: WebDriver = new Builder()
   .forBrowser('chrome')
   .setChromeOptions(chromeOptions)
   .build();
+
+driver.manage().window().maximize().then();

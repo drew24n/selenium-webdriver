@@ -15,7 +15,7 @@ interface postItem extends baseResponse {
   body: string;
 }
 
-describe('Test JSONPlaceholder service (API)', function () {
+describe('Test user actions (API)', function () {
   it('Check todo item object content', async function () {
     const res = await instance.get<todoItem>(
       `${instance.defaults.baseURL}/todos/1`
