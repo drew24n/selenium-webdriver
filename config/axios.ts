@@ -1,5 +1,6 @@
 import axios from 'axios';
+import { apiService } from './env';
 
 export const instance = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com'
+  baseURL: `${apiService}`
 });

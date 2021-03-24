@@ -32,7 +32,7 @@ describe('Test user actions (API)', function () {
   });
 
   it('Check user objects quantity', async function () {
-    const res = await instance.get<Array<Object>>(
+    const res = await instance.get<{}[]>(
       `${instance.defaults.baseURL}/users`
     );
 
