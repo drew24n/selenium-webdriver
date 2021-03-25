@@ -1,11 +1,11 @@
 {
   "extension": ["ts"],
   "require": ["ts-node/register"],
-  "timeout": 15000,
-  "_retries": 1,
+  "timeout": 20000,
+  "retries": 1,
   "bail": false,
   "_parallel": true,
-  "_jobs": 2,
+  "_jobs": 3,
   "reporter": "node_modules/mochawesome",
   "reporter-option": [
     "overwrite=false",

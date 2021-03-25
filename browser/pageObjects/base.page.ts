@@ -1,4 +1,5 @@
 import { driver } from '../../config/chromedriver';
+import '../../config/globals';
 import {
   By,
   Key,
@@ -8,6 +9,10 @@ import {
 } from 'selenium-webdriver';
 
 export class BasePage {
+  public get pageTitle(): Promise<string> {
+    return driver.getTitle();
+  }
+
   public open(path: string): Promise<void> {
     return driver.get(path);
   }
@@ -19,9 +24,5 @@ export class BasePage {
 
   public enterText(input: WebElement, text: string): Promise<void> {
     return input.sendKeys(text, Key.ENTER);
-  }
-
-  public get pageTitle(): Promise<string> {
-    return driver.getTitle();
   }
 }

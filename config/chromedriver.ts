@@ -2,7 +2,7 @@ import { Options } from 'selenium-webdriver/chrome';
 import { Builder, WebDriver } from 'selenium-webdriver';
 import 'chromedriver';
 
-const timeOut = 15000;
+const timeOut = 20000;
 
 const chromeOptions = new Options()
   .headless()
