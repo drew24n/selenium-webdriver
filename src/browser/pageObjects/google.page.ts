@@ -1,10 +1,10 @@
 import { BasePage } from './base.page';
-import { googleURL } from '../../config/env';
+import { googleBaseURL } from '../../config/env';
 import { WebElementPromise } from 'selenium-webdriver';
 
-class Google extends BasePage {
+class GooglePage extends BasePage {
   open(path: string = ''): Promise<void> {
-    return super.open(`${googleURL}/${path}`);
+    return super.open(`${googleBaseURL}/${path}`);
   }
 
   get searchField(): WebElementPromise {
@@ -16,4 +16,4 @@ class Google extends BasePage {
   }
 }
 
-export default new Google();
+export default new GooglePage();

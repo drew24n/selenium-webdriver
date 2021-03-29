@@ -14,13 +14,10 @@ export const driver: WebDriver = new Builder()
   .setChromeOptions(chromeOptions)
   .build();
 
-driver
-  .manage()
-  .setTimeouts({
-    script: timeOut,
-    pageLoad: timeOut,
-    implicit: timeOut
-  })
-  .then();
+driver.manage().setTimeouts({
+  script: timeOut,
+  pageLoad: timeOut,
+  implicit: timeOut
+}).then();
 
 driver.manage().window().maximize().then();

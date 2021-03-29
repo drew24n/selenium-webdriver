@@ -1,10 +1,10 @@
 import { BasePage } from './base.page';
-import { rozetkaURL } from '../../config/env';
+import { rozetkaBaseURL } from '../../config/env';
 import { WebElementPromise } from 'selenium-webdriver';
 
 class Rozetka extends BasePage {
   open(path: string = ''): Promise<void> {
-    return super.open(`${rozetkaURL}/${path}`);
+    return super.open(`${rozetkaBaseURL}/${path}`);
   }
 
   get searchField(): WebElementPromise {
