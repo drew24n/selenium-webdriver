@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync } from 'fs';
 import { writeFile } from 'fs/promises';
-import { driver } from '../config/chromedriver';
+import { driver } from '../config/chromeDriver';
 
 export async function saveScreenshot() {
   const screenshotsPath = './reports/screenshots';

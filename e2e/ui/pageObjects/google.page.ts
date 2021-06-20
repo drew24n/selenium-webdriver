@@ -1,10 +1,9 @@
 import { BasePage } from './base.page';
-import { googleBaseURL } from '../../config/env';
 import { WebElementPromise } from 'selenium-webdriver';
 
 class GooglePage extends BasePage {
   open(path: string = ''): Promise<void> {
-    return super.open(`${googleBaseURL}/${path}`);
+    return super.open(`${process.env.GOOGLE}/${path}`);
   }
 
   get searchField(): WebElementPromise {

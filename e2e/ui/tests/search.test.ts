@@ -1,11 +1,8 @@
 import { expect } from 'chai';
 import GooglePage from '../pageObjects/google.page';
-import { GlobalHooks } from '../../config/globals';
 
-describe('Google tests (Browser)', function () {
-  new GlobalHooks().init();
-
-  it('Check google search page title', async function () {
+describe('Google tests (UI)', function () {
+  it('Search page title should contain "webdriver" word', async function () {
     await GooglePage.open();
     const searchField = await GooglePage.searchField;
     await searchField.click();

@@ -1,1 +1,1 @@
-### API and Browser tests
+### API and UI tests

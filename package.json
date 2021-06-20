@@ -1,27 +1,29 @@
 {
   "name": "auto-tests",
-  "version": "1.1.1",
+  "version": "1.5.0",
   "private": true,
-  "description": "api and browser tests",
+  "description": "api and ui tests",
   "scripts": {
-    "test:api": "npx mocha src/api/specs/**/*.ts",
-    "test:chrome": "npx mocha src/browser/specs/**/*.ts",
-    "test:all": "npx mocha src/api/specs/**/*.ts src/browser/**/*.spec.ts"
+    "test:api": "npx mocha e2e/api/tests/**/*.ts",
+    "test:chrome": "npx mocha e2e/ui/tests/**/*.ts",
+    "test:all": "npx mocha e2e/api/tests/**/*.ts e2e/ui/**/*.test.ts",
+    "prettier": "npx prettier --ignore-path .gitignore **/*.{ts,json,md} --write",
+    "update-all-dependencies": "npx ncu -u && npm i"
   },
   "dependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/chai": "^4.2.15",
-    "@types/mocha": "^8.2.1",
-    "@types/node": "^14.14.35",
-    "@types/selenium-webdriver": "^4.0.11",
+    "@types/chai": "^4.2.19",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^15.12.4",
+    "@types/selenium-webdriver": "^4.0.14",
     "axios": "^0.21.1",
     "chai": "^4.3.4",
-    "chromedriver": "^89.0.0",
-    "mocha": "^8.3.2",
+    "chromedriver": "^91.0.1",
+    "dotenv": "^10.0.0",
+    "mocha": "^9.0.1",
     "mochawesome": "^6.2.2",
-    "prettier": "^2.2.1",
-    "selenium-webdriver": "^4.0.0-beta.2",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.3"
+    "npm-check-updates": "^11.7.1",
+    "prettier": "^2.3.1",
+    "selenium-webdriver": "^4.0.0-beta.4",
+    "ts-node": "^10.0.0"
   }
 }
