@@ -1,16 +1,12 @@
 {
   "compilerOptions": {
     "strict": true,
-    "alwaysStrict": true,
-    "noImplicitAny": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
-    "strictPropertyInitialization": true,
-    "strictNullChecks": true,
-    "pretty": true,
+    "noEmitOnError": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "pretty": true,
     "target": "ESNext",
     "module": "commonjs"
   }
