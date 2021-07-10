@@ -1,17 +1,17 @@
-import { BasePage } from './base.page';
+import { Page } from './page';
 import { WebElementPromise } from 'selenium-webdriver';
 
-class GooglePage extends BasePage {
+class GooglePage extends Page {
   open(path: string = ''): Promise<void> {
-    return super.open(`${process.env.GOOGLE}/${path}`);
+    return super.openPage(`${process.env.GOOGLE}/${path}`);
   }
 
   get searchField(): WebElementPromise {
-    return this.findElementByCss('[name=q]');
+    return super.findElementByCss('[name=q]');
   }
 
   get searchBtn(): WebElementPromise {
-    return this.findElementByCss('#rcnt');
+    return super.findElementByCss('#rcnt');
   }
 }
 

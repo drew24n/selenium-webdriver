@@ -1,1 +1,1 @@
-### API and UI tests
+### REST API and Selenium (Chrome) tests

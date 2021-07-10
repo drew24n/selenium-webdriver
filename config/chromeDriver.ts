@@ -2,10 +2,16 @@ import { Options } from 'selenium-webdriver/chrome';
 import { Builder, WebDriver } from 'selenium-webdriver';
 import 'chromedriver';
 
-class ChromeDriver {
-  private timeout?: number = 20000;
+interface Timeout {
+  implicit?: number;
+  pageLoad?: number;
+  script?: number;
+}
 
-  constructor(timeout?: number) {
+class ChromeDriver {
+  private timeout?: Timeout;
+
+  constructor(timeout?: Timeout) {
     this.timeout = timeout;
   }
 
@@ -23,16 +29,20 @@ class ChromeDriver {
     this.chromeDriver
       .manage()
       .setTimeouts({
-        script: this.timeout,
-        pageLoad: this.timeout,
-        implicit: this.timeout,
+        script: this.timeout?.script,
+        pageLoad: this.timeout?.pageLoad,
+        implicit: this.timeout?.implicit
       })
       .then();
 
-    this.chromeDriver.manage().window().maximize().then();
+    this.chromeDriver.manage().window();
 
     return this.chromeDriver;
   }
 }
 
-export const driver = new ChromeDriver(20000).init();
+export const driver = new ChromeDriver({
+  pageLoad: 10000,
+  implicit: 5000,
+  script: 2500
+}).init();
