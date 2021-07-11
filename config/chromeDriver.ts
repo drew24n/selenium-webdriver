@@ -42,7 +42,7 @@ class ChromeDriver {
 }
 
 export const driver = new ChromeDriver({
-  pageLoad: 10000,
-  implicit: 5000,
-  script: 2500
+  pageLoad: 20000,
+  implicit: 10000,
+  script: 10000
 }).init();

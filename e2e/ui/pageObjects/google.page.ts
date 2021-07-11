@@ -11,7 +11,7 @@ class GooglePage extends Page {
   }
 
   get searchBtn(): WebElementPromise {
-    return super.findElementByCss('#rcnt');
+    return super.findElementByCss('[name=btnK]');
   }
 }
 

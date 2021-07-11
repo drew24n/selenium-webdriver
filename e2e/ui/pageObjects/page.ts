@@ -1,12 +1,10 @@
 import { driver } from '../../../config/chromeDriver';
-import { By, Key, until, WebElement, WebElementPromise } from 'selenium-webdriver';
-import { initGlobalHooks } from '../../../helpers/globalHooks';
+import { By, until, WebElement, WebElementPromise } from 'selenium-webdriver';
+import { initHooks } from '../../../helpers/globalHooks';
+
+initHooks();
 
 export class Page {
-  constructor() {
-    initGlobalHooks();
-  }
-
   openPage(path: string): Promise<void> {
     return driver.get(path);
   }
@@ -16,11 +14,27 @@ export class Page {
     return driver.wait(until.elementIsVisible(element));
   }
 
+  findElementsByCss(cssLocator: string): Promise<WebElement[]> {
+    return driver.findElements(By.css(cssLocator));
+  }
+
   enterText(input: WebElement, text: string): Promise<void> {
-    return input.sendKeys(text, Key.ENTER);
+    return input.sendKeys(text);
+  }
+
+  checkStaleness(elem: WebElement): Promise<boolean> {
+    return driver.wait(until.stalenessOf(elem));
   }
 
   get pageTitle(): Promise<string> {
     return driver.getTitle();
+  }
+
+  get browserTabs(): Promise<string[]> {
+    return driver.getAllWindowHandles();
+  }
+
+  switchTabs(tabId: string): Promise<void> {
+    return driver.switchTo().window(tabId);
   }
 }

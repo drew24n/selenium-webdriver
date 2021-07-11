@@ -1,14 +1,14 @@
 {
   "name": "auto-tests",
-  "version": "1.6.0",
+  "version": "1.6.5",
   "private": true,
   "description": "rest api and selenium (chrome) tests",
   "scripts": {
-    "run api tests": "npx mocha e2e/api/**/*.ts",
-    "run browser tests": "npx mocha e2e/ui/tests/**/*.ts",
-    "run all tests": "npx mocha e2e/api/**/*.ts e2e/ui/**/*.test.ts",
-    "format code": "npx prettier --ignore-path .gitignore **/*.{ts,json,md} --write",
-    "update all dependencies": "npx ncu -u && npm i"
+    "run-api-tests": "npx mocha e2e/api/**/*.ts",
+    "run-browser-tests": "npx mocha e2e/ui/tests/**/*.ts",
+    "run-all-tests": "npx mocha e2e/api/**/*.ts e2e/ui/**/*.test.ts",
+    "format-code": "npx prettier --ignore-path .gitignore **/*.{ts,json,md} --write",
+    "update-all-dependencies": "npx ncu -u && npm i"
   },
   "dependencies": {
     "@types/chai": "^4.2.21",

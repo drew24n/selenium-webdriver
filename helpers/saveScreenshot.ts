@@ -2,7 +2,12 @@ import { existsSync, mkdirSync } from 'fs';
 import { writeFile } from 'fs/promises';
 import { driver } from '../config/chromeDriver';
 
-export async function saveScreenshot() {
+/**
+ * Saves a screenshot from browser instance and adds it to mochawesome report
+ *
+ * @returns {number} Generates timestamp as unique name for screenshot
+ */
+export async function saveScreenshot(): Promise<number> {
   const screenshotsPath = './reports/screenshots';
   const screenshotName = Date.now();
 
