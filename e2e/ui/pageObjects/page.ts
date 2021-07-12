@@ -1,8 +1,5 @@
 import { driver } from '../../../config/chromeDriver';
 import { By, until, WebElement, WebElementPromise } from 'selenium-webdriver';
-import { initHooks } from '../../../helpers/globalHooks';
-
-initHooks();
 
 export class Page {
   openPage(path: string): Promise<void> {

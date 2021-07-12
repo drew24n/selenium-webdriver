@@ -28,7 +28,7 @@ describe('Etsy shop tests (UI)', function () {
     await EtsyPage.addToCartBtn.click();
     const cartPrice = await EtsyPage.cartPrice;
     const cartItemsQuantity = await EtsyPage.cartItemsQuantity;
-    expect(cartPrice).to.be.equal(expectedPrice * 3);
+    expect(cartPrice).to.be.approximately(expectedPrice * 3, 0.25);
     expect(cartItemsQuantity).to.be.equal(3);
   });
 });
