@@ -7,7 +7,7 @@ import { driver } from '../config/chromeDriver';
  *
  * @returns {number} Generates timestamp as unique name for screenshot
  */
-!async function saveScreenshot(): Promise<number> {
+!(async function saveScreenshot(): Promise<number> {
   const screenshotsPath = './reports/screenshots';
   const screenshotName = Date.now();
 
@@ -19,4 +19,4 @@ import { driver } from '../config/chromeDriver';
   await writeFile(`reports/screenshots/${screenshotName}.png`, image, 'base64');
 
   return screenshotName;
-}()
+})();

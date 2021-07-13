@@ -1,36 +1,61 @@
 import { expect } from 'chai';
 import { trelloHttp } from '../../config/http';
 
-describe('Test trello API methods', function () {
-  const card = {
-    name: 'my new card',
-    idList: '60ec7973f09348111d97605c'
-  };
+const card = {
+  name: 'my new card',
+  newName: 'updated card',
+  idList: '60ec7973f09348111d97605c',
+  id: ''
+};
 
-  it('CRUD operations with Trello Card', function () {
-    trelloHttp
-      .post(`/1/cards?name=${card.name}&idList=${card.idList}`)
-      .then((postResponse) => {
-        expect(Object.keys(postResponse.data).length).to.be.equal(34);
-        expect(postResponse.data.name).to.include('my new card');
-        expect(postResponse.status).to.be.equal(200);
-        return trelloHttp.get(`/1/cards/${postResponse.data.id}`);
-      })
-      .then((getResponse) => {
-        expect(Object.keys(getResponse.data).length).to.be.equal(31);
-        expect(getResponse.data.name).to.include('my new card');
-        expect(getResponse.status).to.be.equal(200);
-        return trelloHttp.put(`/1/cards/${getResponse.data.id}?name=updated name`);
-      })
-      .then((updateResponse) => {
-        expect(Object.keys(updateResponse.data).length).to.be.equal(31);
-        expect(updateResponse.data.name).to.include('updated name');
-        expect(updateResponse.status).to.be.equal(200);
-        return trelloHttp.delete(`/1/cards/${updateResponse.data.id}`);
-      })
-      .then((deleteResponse) => {
-        expect(Object.keys(deleteResponse.data).length).to.be.equal(1);
-        expect(deleteResponse.status).to.be.equal(200);
+before(async () => {
+  try {
+    const { data, status } = await trelloHttp.post(
+      `/1/cards?name=${card.name}&idList=${card.idList}`
+    );
+
+    expect(Object.keys(data).length).to.be.equal(34);
+    expect(data.name).to.include('my new card');
+    expect(status).to.be.equal(200);
+
+    if (data.id) {
+      card.id = data.id;
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+describe('Test Trello API methods', function () {
+  it('Get card info', async function () {
+    const { data, status } = await trelloHttp.get(`/1/cards/${card.id}`);
+    expect(Object.keys(data).length).to.be.equal(31);
+    expect(data.name).to.contain('my new card');
+    expect(status).to.be.equal(200);
+  });
+
+  it('Update card name', async function () {
+    const { data, status } = await trelloHttp.put(
+      `/1/cards/${card.id}?name=${card.newName}`
+    );
+    expect(Object.keys(data).length).to.be.equal(31);
+    expect(data.name).to.contain('updated card');
+    expect(status).to.be.equal(200);
+  });
+
+  it('Delete card', async function () {
+    const { data, status } = await trelloHttp.delete(`/1/cards/${card.id}`);
+    expect(Object.keys(data).length).to.be.equal(1);
+    expect(status).to.be.equal(200);
+
+    after(function () {
+      it('Check if card is deleted', async function () {
+        const { status, statusText } = await trelloHttp.get(`/1/cards/${card.id}`, {
+          validateStatus: null
+        });
+        expect(status).to.be.equal(404);
+        expect(statusText).to.be.equal('Not Found');
       });
+    });
   });
 });
