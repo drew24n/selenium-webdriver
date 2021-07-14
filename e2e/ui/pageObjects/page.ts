@@ -1,5 +1,8 @@
 import { driver } from '../../../config/chromeDriver';
 import { By, until, WebElement, WebElementPromise } from 'selenium-webdriver';
+import { initHooks } from '../../../helpers/globalHooks';
+
+initHooks();
 
 export class Page {
   openPage(path: string): Promise<void> {
@@ -21,6 +24,10 @@ export class Page {
 
   checkStaleness(elem: WebElement): Promise<boolean> {
     return driver.wait(until.stalenessOf(elem));
+  }
+
+  elementLocated(cssLocator: string): WebElement {
+    return driver.wait(until.elementLocated(By.css(cssLocator)));
   }
 
   get pageTitle(): Promise<string> {

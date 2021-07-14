@@ -18,7 +18,7 @@ before(async () => {
     expect(data.name).to.include('my new card');
     expect(status).to.be.equal(200);
 
-    if (data.id) {
+    if (data?.id?.length) {
       card.id = data.id;
     }
   } catch (e) {
@@ -43,19 +43,19 @@ describe('Test Trello API methods', function () {
     expect(status).to.be.equal(200);
   });
 
-  it('Delete card', async function () {
-    const { data, status } = await trelloHttp.delete(`/1/cards/${card.id}`);
-    expect(Object.keys(data).length).to.be.equal(1);
-    expect(status).to.be.equal(200);
+  describe('Delete card & verify card is deleted', function () {
+    it('Check delete card', async function () {
+      const { data, status } = await trelloHttp.delete(`/1/cards/${card.id}`);
+      expect(Object.keys(data).length).to.be.equal(1);
+      expect(status).to.be.equal(200);
+    });
 
-    after(function () {
-      it('Check if card is deleted', async function () {
-        const { status, statusText } = await trelloHttp.get(`/1/cards/${card.id}`, {
-          validateStatus: null
-        });
-        expect(status).to.be.equal(404);
-        expect(statusText).to.be.equal('Not Found');
+    it('Verify card is deleted', async function () {
+      const { status, statusText } = await trelloHttp.get(`/1/cards/${card.id}`, {
+        validateStatus: null
       });
+      expect(status).to.be.equal(404);
+      expect(statusText).to.be.equal('Not Found');
     });
   });
 });

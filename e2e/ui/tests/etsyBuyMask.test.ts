@@ -14,6 +14,7 @@ describe('Etsy shop tests (UI)', function () {
     await merchandiseItems[getRandomNum(merchandiseItems.length - 1)].click();
     const browserTabs = await EtsyPage.browserTabs;
     await EtsyPage.switchTabs(browserTabs[browserTabs.length - 1]);
+
     let selectMenus = await EtsyPage.selectMenus;
     if (selectMenus?.length) {
       for (let i = 0; i < selectMenus.length; i++) {
@@ -24,10 +25,15 @@ describe('Etsy shop tests (UI)', function () {
         selectMenus = await EtsyPage.selectMenus;
       }
     }
+
     const expectedPrice = await EtsyPage.price;
     await EtsyPage.addToCartBtn.click();
     const cartPrice = await EtsyPage.cartPrice;
     const cartItemsQuantity = await EtsyPage.cartItemsQuantity;
+    await EtsyPage.proceedToCheckoutBtn.click();
+    const joinEmailField = await EtsyPage.joinEmailField.isDisplayed();
+
+    expect(joinEmailField).to.be.true;
     expect(cartPrice).to.be.approximately(expectedPrice * 3, 0.25);
     expect(cartItemsQuantity).to.be.equal(3);
   });

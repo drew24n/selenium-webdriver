@@ -4,7 +4,7 @@ import { driver } from '../config/chromeDriver';
 const addContext = require('mochawesome/addContext');
 
 export function initHooks(): void {
-  afterEach('make screenshot', async function () {
+  afterEach('make screenshot if test fails', async function () {
     if (this.currentTest?.state === 'failed') {
       const screenshotName = await saveScreenshot();
       addContext(this, `./screenshots/${screenshotName}.png`);

@@ -23,6 +23,10 @@ class EtsyPage extends Page {
     return super.findElementsByCss('#listing-page-cart select');
   }
 
+  get proceedToCheckoutBtn(): WebElementPromise {
+    return super.findElementByCss('.proceed-to-checkout');
+  }
+
   get price(): Promise<number> {
     return super
       .findElementByCss('[data-buy-box-region="price"] p')
@@ -44,6 +48,10 @@ class EtsyPage extends Page {
 
   get addToCartBtn(): WebElementPromise {
     return super.findElementByCss('form > [type="submit"]');
+  }
+
+  get joinEmailField(): WebElementPromise {
+    return super.findElementByCss('#join_neu_email_field');
   }
 }
 
